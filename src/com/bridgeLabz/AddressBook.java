@@ -6,7 +6,22 @@ public class AddressBook {
 
 private static Contacts[] contactsOfPersons= new Contacts[15];//for array decaration
 private static Scanner getUserInput= new Scanner(System.in);//for user input
+private void showContactDetails(Contacts contacts)
+{
+	if(contacts != null) 
+	{
+	System.out.println(">>>>>Contact Details<<<<<");
+	System.out.println("First Name = "+contacts.getFirstName());
+	System.out.println("Last Name = "+contacts.getLastName());
+	System.out.println("Phone Number = "+contacts.getPhoneNumber());
+	System.out.println("Email Id = "+contacts.getEmail());
+	System.out.println("Adress = "+contacts.getAddress());
+	System.out.println("City = "+contacts.getCity());
+	System.out.println("State = "+contacts.getState());
+	System.out.println("ZipCode = "+contacts.getZip());
 
+	}
+}
 
 public static void main(String[] args) {
 
