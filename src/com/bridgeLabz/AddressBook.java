@@ -153,7 +153,9 @@ public static void main(String[] args) {
 	byte menueChoice=0;
 
 	do {
-		System.out.println("  ::>>>Welcome Adress Book<<<::  ");
+		System.out.println("  ::>>>Welcome AdressBook<<<::  ");
+		System.out.println("  Multiple Contacts in AdressBook  ");
+
 		System.out.println("1.Add New Contcat");
 		System.out.println("2.View All Contacts");
 		System.out.println("3.Update Contact");
