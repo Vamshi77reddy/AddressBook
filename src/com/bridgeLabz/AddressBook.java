@@ -6,6 +6,37 @@ public class AddressBook {
 
 private static Contacts[] contactsOfPersons= new Contacts[15];//for array decaration
 private static Scanner getUserInput= new Scanner(System.in);//for user input
+public int createContact(Contacts contacts) 
+{
+	System.out.println("List Of Files");
+	System.out.println(contacts);
+	int index = getIndexFornextEmptyLocation();
+	System.out.println("Index :: "+index);
+	contactsOfPersons[index]=contacts;
+	return index;
+}
+
+private int getIndexFornextEmptyLocation()
+{
+	for (int i=0;i<contactsOfPersons.length;i++)
+	{								
+		if (null==contactsOfPersons[i])
+		{
+			return i;
+		}
+	}
+	return 0;
+}
+
+public void showAllContacts() {
+
+	System.out.println("Showing contacts details");
+
+	for (int i=0;i<contactsOfPersons.length;i++)
+	{								
+		showContactDetails(contactsOfPersons[i]); 
+	}
+}
 private void showContactDetails(Contacts contacts)
 {
 	if(contacts != null) 
@@ -24,7 +55,38 @@ private void showContactDetails(Contacts contacts)
 }
 
 public static void main(String[] args) {
+	AddressBook adressBook=new AddressBook();
 
+
+	byte menueChoice=0;
+
+	do {
+		System.out.println("  ::>>>Adress Book<<<::  ");
+		System.out.println("1.Add New Contcat");
+		System.out.println("2.View All Contacts");
+		byte userChoice=getUserInput.nextByte();
+		switch (userChoice) 
+		{ 
+		case 1:
+			System.out.println("Creating Contact...");
+			Contacts contacts=getContacts();
+			int index1=adressBook.createContact(contacts);
+			System.out.println("contacts id :: "+index1);
+			break;
+		case 2:
+			adressBook.showAllContacts();
+			break;
+		default:
+			System.out.println("Invalid Choice");
+		}
+		System.out.println("Press 1 to continue "+'\n'+"Press any number to exit");
+		menueChoice=getUserInput.nextByte();
+
+
+	} while (menueChoice==1);
+
+
+}
 
  private static Contacts getContacts()
  {
@@ -64,8 +126,8 @@ public static void main(String[] args) {
 
 	 return contacts;
 
- 
+ }
+
 }
 
 
-}
