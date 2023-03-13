@@ -25,6 +25,19 @@ public void updateContacts(String firstName) {
 	showAllContacts();
 
 }
+public void deleteContacts(String firstName) {
+	int i= findByFirstName(firstName);
+	if (i!=-1)
+	{
+		contactsOfPersons[i]=null;
+	}
+	else
+	{
+		System.out.println("Name Not Found");
+	}
+	showAllContacts();
+
+}
 
 
 private int getIndexFornextEmptyLocation()
@@ -43,9 +56,9 @@ private void editContactDetails( Contacts contacts) {
 
 	byte loopExit = 1; 
 		do {
-			System.out.println("Choose Option to Update :: " + '\n' + " 1.FirstName " + '\n' + " 2.LastName " + '\n' + " 3.Address "
-					+ '\n' + " 4.City " + '\n' + " 5.State " + '\n' + " 6.Zip " + '\n'
-							+ " 7.PhoneNumber " + '\n' + " 8.Aadhar_Number " + '\n' + " 9.Email_ID ");
+			System.out.println("Choose Option to Update :: " + '\n' + " 1.FirstName " + '\n' + " 2.LastName " + '\n' + " 3.PhoneNumber "
+					+ '\n' + " 4.EmailId " + '\n' + " 5.Address " + '\n' + " 6.city " + '\n'
+							+ " 7.State " + '\n' + " 8.Zip " );
 			byte option = getUserInput.nextByte();
 
 			switch(option) {
@@ -144,6 +157,8 @@ public static void main(String[] args) {
 		System.out.println("1.Add New Contcat");
 		System.out.println("2.View All Contacts");
 		System.out.println("3.Update Contact");
+		System.out.println("4.Delete Contact");
+
 
 		byte userChoice=getUserInput.nextByte();
 		switch (userChoice) 
@@ -161,6 +176,12 @@ public static void main(String[] args) {
 			System.out.println("Enter First Name :: ");
 			String firstName = getUserInput.next();
 			adressBook.updateContacts(firstName);
+			break;
+		case 4:
+			 System.out.println("Enter the first name of details you want to delete");
+			 String firstName1=getUserInput.next();
+			 adressBook.deleteContacts(firstName1);
+
 			break;
 		default:
 			System.out.println("Invalid Choice");
