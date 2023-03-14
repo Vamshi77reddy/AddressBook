@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class AddressBook {
 
-private static Contacts[] contactsOfPersons= new Contacts[15];//for array decaration
+private static Contact[] contactsOfPersons= new Contact[15];//for array decaration
 private static Scanner getUserInput= new Scanner(System.in);//for user input
-public int createContact(Contacts contacts) 
+public int createContact(Contact contact) 
 {
 	System.out.println("List Of Files");
-	System.out.println(contacts);
+	System.out.println(contact);
 	int index = getIndexFornextEmptyLocation();
 	System.out.println("Index :: "+index);
-	contactsOfPersons[index]=contacts;
+	contactsOfPersons[index]=contact;
 	return index;
 }
 public void updateContacts(String firstName) {
@@ -51,8 +51,8 @@ private int getIndexFornextEmptyLocation()
 	}
 	return 0;
 }
-private void editContactDetails( Contacts contacts) {
-	Contacts con = new Contacts();
+private void editContactDetails( Contact contact) {
+	Contact con = new Contact();
 
 	byte loopExit = 1; 
 		do {
@@ -64,20 +64,20 @@ private void editContactDetails( Contacts contacts) {
 			switch(option) {
 			case 1:
 					System.out.println(" FirstName :: "); 
-					contacts.setFirstName(getUserInput.next());
+					contact.setFirstName(getUserInput.next());
 				break;
 			case 2:
 					System.out.println(" LastName :: ");
-					contacts.setLastName(getUserInput.next());
+					contact.setLastName(getUserInput.next());
 				break;
 			case 3:
 					System.out.println(" PhoneNumber :: ");
-					contacts.setPhoneNumber(getUserInput.nextLong());
+					contact.setPhoneNumber(getUserInput.nextLong());
 
 				break;
 			case 4:
 				System.out.println(" Email_ID :: ");
-				contacts.setEmail(getUserInput.next());
+				contact.setEmail(getUserInput.next());
 			break;
 			case 5:
 				System.out.println(" Address :: ");
@@ -86,15 +86,15 @@ private void editContactDetails( Contacts contacts) {
 				break;
 			case 6:
 					System.out.println(" City :: ");
-					contacts.setCity(getUserInput.next());
+					contact.setCity(getUserInput.next());
 				break;
 			case 7:
 					System.out.println(" State :: ");
-					contacts.setState(getUserInput.next());
+					contact.setState(getUserInput.next());
 				break;
 			case 8:
 					System.out.println(" Zip :: ");
-					contacts.setZip(getUserInput.nextInt());
+					contact.setZip(getUserInput.nextInt());
 				break;
 
 
@@ -115,7 +115,7 @@ public void showAllContacts() {
 		showContactDetails(contactsOfPersons[i]); 
 	}
 }
-private void showContactDetails(Contacts contacts)
+private void showContactDetails(Contact contacts)
 {
 	if(contacts != null) 
 	{
@@ -136,7 +136,7 @@ private int findByFirstName(String firstName)
 
 	for (int i=0;i<contactsOfPersons.length;i++)
 	{								
-		Contacts contacts= contactsOfPersons[i];
+		Contact contacts= contactsOfPersons[i];
 		if(null!=contacts && firstName.equalsIgnoreCase(contacts.getFirstName()))
 		{
 			return i;
@@ -167,7 +167,7 @@ public static void main(String[] args) {
 		{ 
 		case 1:
 			System.out.println("Creating Contact...");
-			Contacts contacts=getContacts();
+			Contact contacts=getContacts();
 			int index1=adressBook.createContact(contacts);
 			System.out.println("contacts id :: "+index1);
 			break;
@@ -197,9 +197,9 @@ public static void main(String[] args) {
 
 }
 
- private static Contacts getContacts()
+ private static Contact getContacts()
  {
-	 Contacts contacts= new Contacts();
+	 Contact contacts= new Contact();
 	 System.out.println("Enter First Name");
 	 String firstName =getUserInput.next();
 	 contacts.setFirstName(firstName);
